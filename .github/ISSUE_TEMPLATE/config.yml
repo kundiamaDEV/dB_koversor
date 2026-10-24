@@ -1,0 +1,25 @@
+# Configuracao dos modelos de issue.
+#
+# ATENCAO -- ACCAO PENDENTE
+# Os URL abaixo contem o marcador <OWNER>/<REPO>, que TEM DE SER SUBSTITUIDO
+# pelo caminho real do repositorio quando este for criado no GitHub. O
+# repositorio ainda nao existe (o projecto nao estava sob controlo de versoes
+# na auditoria de 2026-10-17), pelo que nenhum URL real foi inventado aqui.
+#
+# Enquanto o marcador existir, o GitHub nao apresenta estas ligacoes
+# corretamente. Substituir e verificar antes de abrir o repositorio ao publico.
+
+blank_issues_enabled: true
+
+contact_links:
+  - name: Vulnerabilidade de seguranca (nao abrir issue publico)
+    url: https://github.com/<OWNER>/<REPO>/blob/main/SECURITY.md
+    about: Comunique em privado, pelo procedimento descrito na politica de seguranca. Um issue publico e visivel a quem a pudesse explorar.
+
+  - name: Duvida tecnica sobre decibeis
+    url: https://github.com/<OWNER>/<REPO>/tree/main/docs/content
+    about: Os artigos tecnicos explicam as conversoes, as formulas e os erros mais frequentes, com exemplos numericos verificados.
+
+  - name: Que conversoes sao suportadas
+    url: https://github.com/<OWNER>/<REPO>/blob/main/docs/MATRIZ_CONVERSOES.md
+    about: A matriz lista as 49 combinacoes suportadas, com formulas, limites e o que NAO e suportado (dBi, dBFS, dBSPL, impedancia complexa).

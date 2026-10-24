@@ -1,0 +1,107 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# =====================================================================
+# SEGREDOS E CREDENCIAIS — acrescentado na auditoria de 2026-10-17 (P3)
+# =====================================================================
+#
+# ATENCAO: nunca remover estas regras.
+#
+# A chave de assinatura de uma aplicacao Android e insubstituivel. Se for
+# publicada num repositorio, qualquer pessoa passa a poder assinar pacotes em
+# nome da KUNDIAMA; se for perdida, a aplicacao publicada nunca mais pode ser
+# actualizada. Por isso a chave, as suas passwords e os ficheiros que as
+# contem ficam fora do controlo de versoes e guardados em local seguro,
+# com copia de seguranca.
+
+# Chaves e configuracao de assinatura Android
+android/key.properties
+key.properties
+*.jks
+*.keystore
+*.p12
+*.pem
+*.pepk
+
+# Configuracao local da maquina: contem caminhos do sistema de ficheiros do
+# desenvolvedor (SDK do Android e do Flutter) e nao e portavel.
+android/local.properties
+local.properties
+
+# Artefactos do Firebase.
+#
+# O Firebase foi removido do projecto nesta auditoria e estes ficheiros foram
+# apagados. As regras ficam como prevencao: google-services.json e
+# GoogleService-Info.plist contem chaves de API e identificadores de projecto
+# que nao devem ser publicados.
+android/app/google-services.json
+**/google-services.json
+**/GoogleService-Info.plist
+firebase.json
+.firebaserc
+lib/firebase_options.dart
+
+# Credenciais de servicos e variaveis de ambiente
+*.env
+.env
+.env.*
+service-account*.json
+secrets.properties
+
+# Ficheiro de diagnostico gerado por `flutter gen-l10n`: lista as chaves ainda
+# nao traduzidas. E util localmente, mas e um artefacto de compilacao.
+l10n_untranslated.json
+
+# Resultados de cobertura e capturas geradas automaticamente
+/coverage/
+docs/store/screenshots/generated/
+
+
+# Credenciais e chaves de assinatura Android
+/android/key.properties
+/android/app/upload-keystore.jks
+*.jks
+*.keystore

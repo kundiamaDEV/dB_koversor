@@ -1,0 +1,80 @@
+dB Konversor - exemplos numericos verificados
+Gerado por docs/evidence/gerar_exemplos.dart
+
+--- Potencia linear e dBm -----------------------------------------
+conversao                   apresentado     valor interno       verificacao
+0.0 dBm -> mW               1               1.00000000000       ok
+10.0 dBm -> mW              10              10.0000000000       ok
+20.0 dBm -> mW              100             100.000000000       ok
+30.0 dBm -> W               1               1.00000000000       ok
+-30.0 dBm -> mW             0.001           0.00100000000000    ok
+1.0 W -> dBm                30              30.0000000000       ok
+100.0 mW -> dBm             20              20.0000000000       ok
+0.5 W -> dBm                26.9897         26.9897000434       ok
+2.0 mW -> dBm               3.0103          3.01029995664       ok
+
+--- dBW -----------------------------------------------------------
+conversao                   apresentado     valor interno       verificacao
+0.0 dBW -> W                1               1.00000000000       ok
+0.0 dBW -> dBm              30              30.0000000000       ok
+20.0 dBW -> W               100             100.000000000       ok
+50.0 dBm -> dBW             20              20.0000000000       ok
+-30.0 dBW -> mW             1               1.00000000000       ok
+100.0 W -> dBW              20              20.0000000000       ok
+5.0 W -> dBW                6.9897          6.98970004336       ok
+
+--- Niveis de tensao dBu e dBV ------------------------------------
+conversao                   apresentado     valor interno       verificacao
+0.0 dBu -> dBV              -2.214          -2.21396594987      ok
+0.0 dBV -> dBu              2.214           2.21396594987       ok
+4.0 dBu -> dBV              1.786           1.78603405013       ok
+-10.0 dBV -> dBu            -7.786          -7.78603405013      ok
+
+--- Potencia <-> tensao em 50 ohm (radiofrequencia) ---------------
+conversao                   apresentado     valor interno       verificacao
+-120.0 dBm -> dBV           -133.0103       -133.010299957      ok
+-100.0 dBm -> dBV           -113.0103       -113.010299957      ok
+-90.0 dBm -> dBV            -103.0103       -103.010299957      ok
+-60.0 dBm -> dBV            -73.0103        -73.0102999566      ok
+-30.0 dBm -> dBV            -43.0103        -43.0102999566      ok
+0.0 dBm -> dBV              -13.0103        -13.0102999566      ok
+20.0 dBm -> dBV             6.9897          6.98970004336       ok
+30.0 dBm -> dBV             16.9897         16.9897000434       ok
+43.0 dBm -> dBV             29.9897         29.9897000434       ok
+
+--- Potencia <-> tensao em 600 ohm (audio) ------------------------
+conversao                   apresentado     valor interno       verificacao
+-20.0 dBm -> dBu            -20.0045        -20.0045215463      ok
+0.0 dBm -> dBu              -0.004522       -0.00452154628977   ok
+10.0 dBm -> dBu             9.9955          9.99547845371       ok
+0.0 dBu -> mW               1.001           1.00104166667       ok
+
+--- Tensao em 8 ohm (altifalantes) --------------------------------
+conversao                   apresentado     valor interno       verificacao
+0.0 dBV -> W                0.125           0.125000000000      ok
+10.0 dBV -> W               1.25            1.25000000000       ok
+20.0 dBV -> W               12.5            12.5000000000       ok
+
+--- dB relativo com referencia ------------------------------------
+conversao                   apresentado     valor interno       verificacao
+2.0 W -> dB                 3.0103          3.01029995664       ok
+100.0 mW -> dB              20              20.0000000000       ok
+23.0 dBm -> dB              3               3.00000000000       ok
+3.0 dB -> dBm               23              23.0000000000       ok
+-3.0 dB -> W                50.1187         50.1187233627       ok
+
+--- Casos limite (devem falhar de forma explicita) ----------------
+conversao                   apresentado     valor interno       verificacao
+0.0 mW -> dBm               rejeitado: ConversionError.nonPositiveForLog
+-5.0 W -> dBm               rejeitado: ConversionError.negativePower
+4000.0 dBm -> W             rejeitado: ConversionError.outOfRange
+-4000.0 dBW -> W            rejeitado: ConversionError.outOfRange
+
+--- Formulas apresentadas ao utilizador ---------------------------
+conversao                   apresentado     valor interno       verificacao
+dBm -> W                    mW = 10^(dBm / 10)  |  W = mW / 1000
+W -> dBm                    mW = W × 1000  |  dBm = 10 × log10(mW)
+dBW -> dBm                  mW = 10^((dBW + 30) / 10)  |  dBm = 10 × log10(mW)
+dBm -> dBV                  mW = 10^(dBm / 10)  |  V = √(P × R)  |  dBV = 20 × log10(V)
+dBV -> W                    V = 10^(dBV / 20)  |  P = V² / R  |  W = mW / 1000
+dBu -> dBV                  V = 0,775 × 10^(dBu / 20)  |  dBV = 20 × log10(V)

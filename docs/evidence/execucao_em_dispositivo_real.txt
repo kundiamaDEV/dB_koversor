@@ -1,0 +1,146 @@
+EXECUCAO EM DISPOSITIVO ANDROID REAL
+====================================
+
+Data    : 2026-10-19
+Ambiente: Windows 11 Pro 10.0.26200, Flutter 3.41.1, Dart 3.11.0
+
+CONTEXTO
+--------
+No inicio da auditoria (2026-10-17) nao havia nenhum alvo Android disponivel:
+
+    > flutter devices
+    Found 3 connected devices:
+      Windows (desktop) - windows - windows-x64
+      Chrome (web)      - chrome  - web-javascript
+      Edge (web)        - edge    - web-javascript
+
+    > flutter emulators
+    No emulators available.
+
+Durante a sessao de 2026-10-19, um telefone Android foi ligado por USB, o que
+permitiu executar parte das verificacoes que estavam marcadas como pendentes.
+O dispositivo desligou-se antes de todas poderem ser feitas. Este ficheiro
+regista, com exactidao, o que foi e o que NAO foi verificado.
+
+
+DISPOSITIVO
+-----------
+Modelo             : 25028RN03A (produto serenity_global)
+Sistema            : Android 15 (API 35)
+Resolucao          : 720 x 1640
+Densidade          : 320 dpi
+Serie              : 863d00583048313238511349faa77c
+Ligacao            : USB
+
+
+VERIFICADO COM EXITO
+--------------------
+
+1. COMPILACAO DE LANCAMENTO
+   Comando : flutter build apk --release
+   Resultado: APROVADO
+   Saida    : "Built build\app\outputs\flutter-apk\app-release.apk (53.1MB)"
+   Nota     : o tipo de letra de icones foi reduzido de 1 645 184 para 3 652
+              bytes (reducao de 99,8%) pela remocao de icones nao usados.
+
+2. INSTALACAO NO DISPOSITIVO
+   Comando : adb install -r build/app/outputs/flutter-apk/app-release.apk
+   Resultado: APROVADO
+   Saida    : "Performing Streamed Install" / "Success"
+   Nota     : instalacao da variante de LANCAMENTO, nao de depuracao.
+
+3. ARRANQUE DA APLICACAO
+   Comando : adb shell monkey -p ao.kundiama.dbkonversor -c android.intent.category.LAUNCHER 1
+   Resultado: APROVADO
+   Evidencia: o processo ficou a correr com o PID 17813, confirmado por
+              `adb shell pidof ao.kundiama.dbkonversor`.
+
+4. AUSENCIA DE FALHAS NO ARRANQUE
+   Comando : adb logcat -d -t 400
+   Resultado: APROVADO
+   Evidencia: nenhuma linha FATAL nem AndroidRuntime no registo. As unicas
+              entradas relativas ao pacote sao normais do sistema grafico:
+
+                SurfaceFlinger: ... SurfaceView[ao.kundiama.dbkonversor/
+                                    ao.kundiama.dbkonversor.MainActivity]
+                mali_gralloc: allocate: ... size=720x1640
+                ActivityManager: remove ao.kundiama.dbkonversor from
+                                 ColdStartingAppList
+                ProfileInstaller: Installing profile for ao.kundiama.dbkonversor
+
+   SIGNIFICADO: este e o resultado mais importante deste ficheiro. Confirma
+   em hardware real que o bloqueador B1 (MainActivity.kt com um script
+   PowerShell em vez de codigo Kotlin) esta efectivamente resolvido: a classe
+   ao.kundiama.dbkonversor.MainActivity existe, e instanciada pelo Android e
+   a aplicacao arranca.
+
+
+NAO VERIFICADO -- O DISPOSITIVO DESLIGOU-SE
+-------------------------------------------
+A ligacao USB caiu durante a preparacao das capturas:
+
+    adb.exe: no devices/emulators found
+
+Depois de 20 segundos de espera, o dispositivo nao voltou a aparecer. As
+verificacoes seguintes NAO foram feitas e continuam pendentes:
+
+  - Capturas de ecra para a ficha da loja.
+    A unica captura obtida foi feita com o ecra do telefone APAGADO e saiu
+    completamente preta, pelo que foi apagada em vez de ser aproveitada. Uma
+    imagem preta nao demonstra nada sobre a interface.
+
+  - Verificacao visual da interface em hardware real.
+  - Persistencia do historico depois de fechar e reabrir a aplicacao.
+    (Esta continua verificada apenas por teste automatizado:
+     test/conversion_history_test.dart, "PERSISTENCIA: o historico sobrevive
+     a fechar e reabrir".)
+  - Comportamento em modo de voo.
+  - Acessibilidade com o TalkBack.
+  - Apresentacao dos caracteres chineses.
+  - Layout em tablet (este dispositivo e um telefone).
+
+
+DEFEITO ENCONTRADO NA FERRAMENTA DE CAPTURA
+-------------------------------------------
+A tentativa de captura revelou um defeito no script
+docs/store/screenshots/capturar.ps1, que foi corrigido:
+
+  PROBLEMA : `adb exec-out screencap -p > ficheiro.png` em PowerShell produz
+             um PNG CORROMPIDO. O operador `>` trata a saida como texto,
+             aplica a codificacao de saida e acrescenta um BOM.
+
+  EVIDENCIA: os primeiros bytes do ficheiro gerado eram
+
+                 ef bb bf ef bf bd 50 4e
+
+             quando a assinatura de um PNG valido e
+
+                 89 50 4e 47
+
+  CORRECCAO: passar a gravar no dispositivo e trazer o ficheiro com `adb
+             pull`, que copia os bytes sem interpretacao:
+
+                 adb shell screencap -p /sdcard/temp.png
+                 adb pull /sdcard/temp.png <destino>
+                 adb shell rm /sdcard/temp.png
+
+  ACRESCENTADO: o script passou tambem a
+             (a) verificar a assinatura PNG dos ficheiros gerados, apagando
+                 os que nao forem imagens validas, e
+             (b) acordar o ecra antes de capturar, para nao produzir imagens
+                 pretas.
+
+  NOTA PARA QUEM USAR GIT BASH: o Git Bash converte /sdcard/... num caminho
+  do Windows. E preciso exportar MSYS_NO_PATHCONV=1 antes de usar o adb com
+  caminhos do dispositivo. Em PowerShell esse problema nao existe.
+
+
+COMO REPETIR, QUANDO HOUVER DISPOSITIVO
+---------------------------------------
+    flutter devices                       # confirmar que ha um alvo Android
+    flutter build apk --release
+    adb install -r build/app/outputs/flutter-apk/app-release.apk
+    ./docs/store/screenshots/capturar.ps1 -Idioma pt -Classe phone
+
+O procedimento completo, com a lista das seis capturas e os estados a
+preparar em cada uma, esta em docs/store/screenshots/PLANO_CAPTURAS.md.

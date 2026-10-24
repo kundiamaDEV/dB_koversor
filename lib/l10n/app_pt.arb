@@ -1,0 +1,182 @@
+{
+  "@@locale": "pt",
+  "@@x-notes": "Ficheiro modelo (português). Todas as outras traduções derivam deste. Símbolos técnicos (dB, dBm, dBW, dBV, dBu, W, mW, V, Ω) NÃO são traduzidos. As fórmulas matemáticas não aparecem aqui: são notação universal construída em código.",
+
+  "appTitle": "dB Konversor",
+  "@appTitle": {
+    "description": "Nome do produto. Não traduzir em nenhum idioma."
+  },
+  "appTagline": "Converta decibéis com precisão\ne simplicidade.",
+  "@appTagline": {
+    "description": "Frase do ecrã de abertura. Contém uma quebra de linha intencional."
+  },
+  "splashLoading": "A carregar...",
+  "splashVersion": "Versão {version}",
+  "@splashVersion": {
+    "placeholders": { "version": { "type": "String", "example": "1.0.0" } }
+  },
+
+  "sectionInputValue": "VALOR DE ENTRADA",
+  "@sectionInputValue": {
+    "description": "Título de secção, apresentado em maiúsculas."
+  },
+  "sectionOutputValue": "VALOR DE SAÍDA",
+  "sectionInputUnit": "UNIDADE DE ENTRADA",
+  "sectionOutputUnit": "UNIDADE DE SAÍDA",
+  "sectionImpedance": "IMPEDÂNCIA",
+  "sectionReference": "VALOR DE REFERÊNCIA",
+
+  "inputHint": "Digite o valor",
+  "impedanceHint": "Ex.: 50",
+  "referenceHelper": "A referência deve corresponder à unidade indicada.",
+  "resultPlaceholder": "--",
+  "@resultPlaceholder": {
+    "description": "Marcador apresentado quando ainda não há resultado. Igual em todos os idiomas."
+  },
+
+  "buttonFormula": "FÓRMULA",
+  "dialogFormulaTitle": "Fórmula",
+  "formulaEmpty": "A fórmula aparecerá aqui após a conversão.",
+  "actionClose": "Fechar",
+  "actionUnderstood": "Entendi",
+  "actionCancel": "Cancelar",
+  "actionClear": "Limpar",
+
+  "helpTitle": "Ajuda",
+  "helpInstructions": "Introduza o valor de entrada, escolha a unidade de entrada e a unidade de saída. Quando for pedido, introduza também a impedância ou o valor de referência. O resultado aparece no campo de saída.",
+  "helpMadeBy": "Desenvolvido por: KUNDIAMA",
+  "@helpMadeBy": {
+    "description": "O nome KUNDIAMA é uma marca e não se traduz."
+  },
+  "helpContact": "Contacto: {phones}",
+  "@helpContact": {
+    "placeholders": { "phones": { "type": "String", "example": "945560400 / 952142799" } }
+  },
+  "helpEmail": "E-mail: {email}",
+  "@helpEmail": {
+    "placeholders": { "email": { "type": "String", "example": "nome@exemplo.com" } }
+  },
+
+  "historyTitle": "Histórico recente",
+  "historyEmpty": "Ainda não há conversões registadas.",
+  "historyEmptyHint": "As conversões que fizer aparecem aqui, guardadas apenas neste dispositivo.",
+  "historyClearTitle": "Limpar o histórico?",
+  "historyClearMessage": "Todas as conversões guardadas neste dispositivo serão apagadas. Esta acção não pode ser desfeita.",
+  "historyCleared": "Histórico apagado.",
+  "historyJustNow": "Agora mesmo",
+  "historyMinutesAgo": "{minutes, plural, =1{Há 1 minuto} other{Há {minutes} minutos}}",
+  "@historyMinutesAgo": {
+    "placeholders": { "minutes": { "type": "int" } }
+  },
+  "historyHoursAgo": "{hours, plural, =1{Há 1 hora} other{Há {hours} horas}}",
+  "@historyHoursAgo": {
+    "placeholders": { "hours": { "type": "int" } }
+  },
+  "historyLocalOnly": "Guardado apenas neste dispositivo.",
+
+  "drawerUnitsTitle": "UNIDADES DISPONÍVEIS",
+  "drawerUseAsInput": "Usar como entrada",
+  "drawerUseAsOutput": "Usar como saída",
+  "drawerAboutTitle": "Sobre o dB Konversor",
+  "drawerAboutSubtitle": "Conversões de potência e níveis logarítmicos usados em telecomunicações, electrónica e áudio.",
+  "drawerPrivacy": "Política de Privacidade",
+
+  "tooltipMenu": "Abrir o menu de unidades",
+  "tooltipHelp": "Ajuda",
+  "tooltipSwap": "Inverter as unidades",
+  "tooltipHistory": "Histórico de conversões",
+  "semanticsResult": "Resultado: {value} {unit}",
+  "@semanticsResult": {
+    "description": "Texto lido pelos leitores de ecrã.",
+    "placeholders": {
+      "value": { "type": "String" },
+      "unit": { "type": "String" }
+    }
+  },
+  "semanticsNoResult": "Ainda não há resultado.",
+
+  "promptEnterData": "Introduza os dados para calcular.",
+
+  "referenceLabelForUnit": "Referência ({unit})",
+  "@referenceLabelForUnit": {
+    "description": "O símbolo da unidade não se traduz.",
+    "placeholders": { "unit": { "type": "String", "example": "dBm" } }
+  },
+  "referencePowerLabel": "Potência de referência ({unit})",
+  "@referencePowerLabel": {
+    "placeholders": { "unit": { "type": "String", "example": "W" } }
+  },
+  "referenceGenericLabel": "Valor de referência",
+  "referenceHintForUnit": "Ex.: 0 {unit}",
+  "@referenceHintForUnit": {
+    "placeholders": { "unit": { "type": "String", "example": "dBm" } }
+  },
+  "referenceHintGeneric": "Introduza a referência",
+
+  "typeRatioReference": "Razão logarítmica e nível de referência",
+  "typePower": "Conversão de potência",
+  "typeVoltageLevel": "Nível logarítmico de tensão",
+  "typePowerVoltageImpedance": "Potência e tensão com impedância",
+  "typeTechnical": "Conversão técnica",
+
+  "describeRatioReference": "Para calcular uma razão em decibéis ou um nível absoluto, introduza a referência compatível com as unidades seleccionadas.",
+  "describeImpedance": "Esta conversão relaciona tensão e potência. Introduza a impedância correcta do sistema para obter um resultado válido.",
+
+  "unitDescWatt": "Potência linear em watts.",
+  "unitDescMilliwatt": "Potência linear em miliwatts.",
+  "unitDescDb": "Relação logarítmica entre duas grandezas. Precisa de um valor de referência para dar um nível absoluto.",
+  "unitDescDbm": "Potência absoluta referenciada a 1 mW.",
+  "unitDescDbw": "Potência absoluta referenciada a 1 W. 0 dBW = 30 dBm.",
+  "unitDescDbu": "Nível de tensão referenciado a 0,775 V.",
+  "unitDescDbv": "Nível de tensão referenciado a 1 V.",
+
+  "errEmptyInput": "Introduza um valor de entrada.",
+  "errInvalidNumber": "Introduza um número válido.",
+  "errNonFiniteInput": "Introduza um número finito.",
+  "errNonPositiveForLog": "O valor em {unit} tem de ser maior que zero: o logaritmo de zero ou de um número negativo não está definido.",
+  "@errNonPositiveForLog": {
+    "description": "O símbolo da unidade não se traduz.",
+    "placeholders": { "unit": { "type": "String", "example": "mW" } }
+  },
+  "errNegativePower": "O valor em {unit} não pode ser negativo: a potência dissipada não é uma grandeza negativa.",
+  "@errNegativePower": {
+    "placeholders": { "unit": { "type": "String", "example": "W" } }
+  },
+  "errMissingImpedance": "Introduza a impedância para esta conversão.",
+  "errNonPositiveImpedance": "A impedância tem de ser maior que zero.",
+  "errMissingReference": "Introduza um valor de referência válido.",
+  "errNonPositiveReference": "A potência de referência tem de ser maior que zero.",
+  "errOutOfRange": "O valor em {unit} está fora do intervalo que a aplicação consegue representar.",
+  "@errOutOfRange": {
+    "placeholders": { "unit": { "type": "String", "example": "dBm" } }
+  },
+  "errResultOutOfRange": "O resultado excede o intervalo numérico representável.",
+  "errUnsupportedCombination": "Esta combinação de unidades não é suportada.",
+  "errIncompatibleReference": "Esta referência não é compatível com as unidades seleccionadas.",
+  "errComputationFailed": "Não foi possível concluir o cálculo com os valores introduzidos.",
+
+  "privacyTitle": "Política de Privacidade",
+  "privacyUpdated": "Última actualização: {date}",
+  "@privacyUpdated": {
+    "placeholders": { "date": { "type": "String", "example": "17/10/2026" } }
+  },
+  "privacyIntro": "Esta política explica como o dB Konversor, desenvolvido pela KUNDIAMA Tecnologia e Inovação, trata a informação. Foi escrita a partir de uma auditoria ao código da aplicação.",
+  "privacyNoCollectionTitle": "Dados que não recolhemos",
+  "privacyNoCollectionBody": "A aplicação não cria conta de utilizador, não pede nome, e-mail, número de telefone nem localização. Não integra publicidade nem ferramentas de análise de utilização. Não enviamos os seus dados para nenhum servidor, porque a aplicação não comunica com nenhum servidor.",
+  "privacyLocalDataTitle": "Dados guardados no seu dispositivo",
+  "privacyLocalDataBody": "O histórico de conversões — o valor que introduziu, as unidades escolhidas, o resultado e a data — é guardado no armazenamento privado da aplicação, no seu próprio dispositivo. Esta informação nunca sai do dispositivo e não é acessível à KUNDIAMA.",
+  "privacyRetentionTitle": "Conservação e eliminação",
+  "privacyRetentionBody": "O histórico fica guardado até o apagar. Pode apagá-lo em qualquer momento no ecrã de histórico, através da opção de limpar. Desinstalar a aplicação elimina também todos os dados que ela tenha guardado.",
+  "privacyPermissionsTitle": "Permissões",
+  "privacyPermissionsBody": "A versão de lançamento da aplicação não pede a permissão de acesso à Internet nem qualquer outra permissão do sistema Android.",
+  "privacyThirdPartyTitle": "Serviços de terceiros",
+  "privacyThirdPartyBody": "A aplicação não integra serviços de terceiros que recolham dados. A distribuição é feita pela Google Play, que recolhe os seus próprios dados de instalação segundo as políticas da Google, fora do controlo da KUNDIAMA.",
+  "privacyChildrenTitle": "Utilização por menores",
+  "privacyChildrenBody": "A aplicação é uma ferramenta de cálculo técnico, adequada a estudantes. Como não recolhe dados pessoais, não trata informação de menores.",
+  "privacyRightsTitle": "Os seus direitos",
+  "privacyRightsBody": "Como não guardamos dados pessoais nos nossos sistemas, não há informação sua para consultar, corrigir ou apagar do nosso lado. Os dados que a aplicação guarda estão sob o seu controlo directo, no seu dispositivo.",
+  "privacyContactTitle": "Contacto",
+  "privacyContactBody": "Para qualquer questão sobre esta política, use os contactos indicados no ecrã de Ajuda da aplicação.",
+  "privacyChangesTitle": "Alterações a esta política",
+  "privacyChangesBody": "Se o tratamento de dados mudar numa versão futura, esta política será actualizada e a data de actualização alterada."
+}

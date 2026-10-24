@@ -1,0 +1,67 @@
+name: db_konversor
+description: "Aplicativo para conversão entre unidades de potência e níveis logarítmicos."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Traducoes dos widgets do proprio Flutter (datas, dialogos, campos de texto).
+  # Acrescentado na auditoria de 2026-10-17, Fase 4 (internacionalizacao).
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # Formatacao sensivel ao idioma (datas do historico) e suporte dos ficheiros
+  # ARB gerados. Fase 4.
+  intl: any
+
+  # Persistencia local do historico de conversoes, Fase 3.
+  # Escolhido em vez de uma base de dados por ser um pacote oficial da equipa
+  # Flutter, por o historico ser uma lista pequena e por nao exigir esquema.
+  # Os dados ficam exclusivamente no dispositivo. Ver docs/privacy/.
+  shared_preferences: ^2.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+  flutter_launcher_icons: ^0.14.3
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+
+  image_path: "assets/icons/app_icon.png"
+
+  adaptive_icon_background: "#050B18"
+  adaptive_icon_foreground: "assets/icons/app_icon.png"
+
+  min_sdk_android: 21
+
+flutter:
+  uses-material-design: true
+
+  # Gera lib/l10n/app_localizations.dart a partir de lib/l10n/*.arb.
+  # Configuracao em l10n.yaml. Fase 4.
+  generate: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic

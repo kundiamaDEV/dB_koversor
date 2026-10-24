@@ -1,0 +1,34 @@
+Comando : flutter test
+Data    : 2026-10-17
+Ambiente: Windows 11 Pro 10.0.26200, Flutter 3.41.1, Dart 3.11.0
+Estado  : codigo de producao AINDA NAO CORRIGIDO (sqrt iterativo original)
+Resultado: 35 testes aprovados, 4 reprovados -- "Some tests failed."
+
+As 4 reprovacoes sao todas do defeito M1 (raiz quadrada iterativa divergente):
+
+1) "REGRESSAO M1 -- -120 dBm em 50 ohm e -133,0103 dBV, nao -114,35 dBV"
+   Expected: a numeric value within <0.000001> of <-133.01029995664>
+     Actual: <-114.35218...>
+      Which: differs by <18.658...>
+
+2) "REGRESSAO M1 -- gama completa de -130 a +150 dBm contra a forma fechada"
+   Expected: a numeric value within <0.000001> of <-143.0103>
+     Actual: <-114.38742036266126>
+      Which: differs by <28.622879593978553>
+   -130.0 dBm em 50.0 ohm: esperado -143.010300 dBV, obtido -114.387420 dBV
+
+3) "potencia -> dBu contra a forma fechada, em 600 ohm e 50 ohm"
+   Expected: a numeric value within <0.000001> of <-130.79633400676602>
+     Actual: <-112.13776687004362>
+      Which: differs by <18.658567136722397>
+   -120.0 dBm em 50.0 ohm -> dBu
+
+4) "conversao inversa dBm -> dBV -> dBm recupera o valor"
+   Expected: a numeric value within <0.000001> of <-110.0>
+     Actual: <-100.99545979193265>
+      Which: differs by <9.004540208067354>
+   ida e volta de -110.0 dBm
+
+Nota: a conversao inversa (4) e a demonstracao mais simples do problema -- o
+valor introduzido nao e recuperado ao converter de volta, o que por si so prova
+que uma das duas direccoes esta errada.

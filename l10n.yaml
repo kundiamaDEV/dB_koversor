@@ -1,0 +1,21 @@
+# Configuracao da geracao de localizacoes do Flutter.
+# Acrescentado na auditoria de 2026-10-17 (Fase 4).
+#
+# `flutter gen-l10n` (ou qualquer `flutter run`/`flutter build`, porque
+# `generate: true` esta activo no pubspec.yaml) le os ficheiros ARB indicados
+# aqui e escreve a classe `AppLocalizations`.
+#
+# O ficheiro gerado NAO deve ser editado a mao: as alteracoes fazem-se nos ARB.
+arb-dir: lib/l10n
+template-arb-file: app_pt.arb
+output-localization-file: app_localizations.dart
+output-class: AppLocalizations
+output-dir: lib/l10n/generated
+
+# Avisa quando uma chave existe no modelo (pt) e falta numa traducao.
+# E a rede de seguranca contra textos nao traduzidos.
+untranslated-messages-file: l10n_untranslated.json
+
+# `nullable-getter: false` faz com que `AppLocalizations.of(context)` devolva
+# um valor nao nulo, evitando verificacoes repetidas em toda a interface.
+nullable-getter: false
